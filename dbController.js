@@ -15,8 +15,8 @@ var scrapy = require('node-scrapy');
 
 // Check Login By Email (unique) + Pass
 exports.checkLogin = function(req, res){
-	var email = req.body.email;
-	var password = req.body.password;
+	var email = req.params.email;
+	var password = req.params.password;
 
 	var now = new Date();
 	dateFormat(now, "fullDate");
