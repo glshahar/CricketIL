@@ -7,38 +7,37 @@ var fs = require('fs');
 // var urlrouter = require('urlrouter');
 var http = http = require('http');
 
-var allowCrossDomain = function(req, res, next) {
-        // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+// var allowCrossDomain = function(req, res, next) {
+//         // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-   next();
-}
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//    next();
+// }
 
 /*** Server settings ***/
 app.use('/', express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(function(req, res, next){
-	res.header("Access-Control-Allow-Origin", "https://cricketown.herokuapp.com/");
+	res.addHeader("Access-Control-Allow-Origin", "https://cricketown.herokuapp.com/");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.header("Content-Type", "application/json");	
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header('Access-Control-Allow-Methods', 'GET, POST');
-	res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
 	next();
 });
 
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
 
 /*** All routes ***/
