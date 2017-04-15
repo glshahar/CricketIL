@@ -16,6 +16,7 @@ app.use(function(req, res, next){
 	res.header("Content-Type", "application/json");	
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header('Access-Control-Allow-Methods', 'GET, POST');
+	res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
 	next();
 });
 
