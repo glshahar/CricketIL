@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bodyParser  = require('body-parser');
 // Schemes / Collections
 var Product = require('./defineSchema/Product');
 var User = require('./defineSchema/User');
