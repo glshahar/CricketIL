@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 var schema = mongoose.Schema;
 var userSchema = new schema({
-	email: "string",
-	password: "string",
-	gcmId: "string",
+	email: String,
+	password: String,
+	gcmId: String,
 	popTune: Number,
 	popVibrate: Number,
 	popMobile: Number,
@@ -12,7 +12,7 @@ var userSchema = new schema({
     popMail: Number,
     autoUpdate: Number,
     needRefresh: Number,
-	address: "string",
+	address: String,
 	products: [],
 	results: []
 }, {collection: 'users'});
