@@ -225,7 +225,7 @@ exports.addNewItem = function(req, res){
 
 			// set Title
 			newProduct.title = data.title;
-			var title = data.titlel
+			var title = data.titlel;
 			console.log(data.all);
 
 			// set Brand
@@ -289,7 +289,7 @@ exports.addNewItem = function(req, res){
 
 			// set Title
 			newProduct.title = data.title;
-			var title = data.titlel
+			var title = data.titlel;
 
 			// set Brand
 			for(i=0; i<data.description.length; i++)
@@ -311,7 +311,7 @@ exports.addNewItem = function(req, res){
 			if(data.shipping){
 				// var tmpShip = data.shipping.split(" ");
 				// newProduct.shipping = data.shipping;
-				newProduct.shipping = "Free Shipping"
+				newProduct.shipping = "Free Shipping";
 			}
 
 			// set Categories
