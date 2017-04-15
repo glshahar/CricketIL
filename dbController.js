@@ -1,15 +1,11 @@
 var mongoose = require('mongoose');
-var bodyParser  = require('body-parser');
-
 // Schemes / Collections
 var Product = require('./defineSchema/Product');
 var User = require('./defineSchema/User');
-
 // var sys = require('sys'),
 //     exec = require('child_process').exec;
 // var spawn = require('child_process').spawn,
 //     py = spawn('python', ['compute_input.py']);
-
 var dateFormat = require('dateformat');
 // var nodemailer = require('nodemailer');
 // const bunyan = require('bunyan');
