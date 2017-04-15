@@ -18,8 +18,6 @@ app.use(function(req, res, next){
 	next();
 });
 
-var router = new URLRouter;
-router.match(HTTPMethod.options, "*", &sendOptions);
 
 /*** All routes ***/
 app.post('/checkLogin', db.checkLogin);
