@@ -29,16 +29,16 @@ exports.checkLogin = function(req, res){
 	var query = User.findOne({}).where('email').equals(email). 
 								 where('password').equals(password).
 								 exec (function(err, user){
-		// if(err){
-		// 	console.log(err);
-		// 	return res.status(500).send();
-		// }
-		// if(!user){
-		// 	console.log("Email / Password Incorrect");
-		// 	return res.status(404).send();
-		// }
+		if(err){
+			console.log(err);
+			return res.status(500).send();
+		}
+		if(!user){
+			console.log("Email / Password Incorrect");
+			return res.status(404).send();
+		}
 		console.log("Connected Successfully");
-		// return res.status(200).send(user);
+		return res.status(200).send(user);
 	})
 };
 
