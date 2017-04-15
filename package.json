@@ -18,5 +18,13 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glshahar/CricketIL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glshahar/CricketIL/issues"
+  },
+  "homepage": "https://github.com/glshahar/CricketIL#readme"
 }
