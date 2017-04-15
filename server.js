@@ -4,7 +4,7 @@ var bodyParser  = require('body-parser');
 var db = require('./dbController');
 var port = process.env.PORT || 3000;
 var fs = require('fs');
-var urlrouter = require('urlrouter');
+// var urlrouter = require('urlrouter');
 var http = http = require('http');
 
 var allowCrossDomain = function(req, res, next) {
@@ -37,8 +37,8 @@ app.use(function(req, res, next){
 	next();
 });
 
-app.use(app.router);
-app.use(allowCrossDomain);
+// app.use(app.router);
+// app.use(allowCrossDomain);
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*** All routes ***/
