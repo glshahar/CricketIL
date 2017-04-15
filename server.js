@@ -37,9 +37,9 @@ app.use(function(req, res, next){
 	next();
 });
 
-// app.use(app.router);
-// app.use(allowCrossDomain);
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(allowCrossDomain);
+
 
 /*** All routes ***/
 app.post('/checkLogin', db.checkLogin);
