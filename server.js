@@ -28,7 +28,7 @@ app.use('/', express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(function(req, res, next){
-	res.addHeader("Access-Control-Allow-Origin", "https://cricketown.herokuapp.com/");
+	res.setHeader("Access-Control-Allow-Origin", "https://cricketown.herokuapp.com/");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.header("Content-Type", "application/json");	
 	res.header('Access-Control-Allow-Credentials', true);
