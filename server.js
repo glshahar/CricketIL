@@ -24,9 +24,6 @@ app.post('/removeAll', db.removeAll);
 app.post('/removeItem', db.removeItem);
 app.post('/addNewItem', db.addNewItem);
 app.post('/refreshItem', db.refreshItem);
-app.get('/', function(req, res){
-  res.send('hello world');
-});
 
 app.listen(port);
 console.log("listening on port " + port);

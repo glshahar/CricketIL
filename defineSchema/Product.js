@@ -1,22 +1,22 @@
-var mongoose = require('mongoose');
+var mongoose =require('mongoose');
 var schema = mongoose.Schema;
 
 var productSchema = new schema({
-	_id: {type:String, index:1, required:true, unique:true},
-	url: "string",
-	store: "string",
-	brand: "string",
-	title: "string",
-	description: "string",
-	images: "string",
+	id: {type:String, index:1, required:true, unique:true},
+	url: String,
+	store: String,
+	brand: String,
+	title: String,
+	description: String,
+	images: [],
 	categories: [],
 	sizes: [],
-	itemsSum: "string",
-	size: "string",
-	price: "string", // temp String
-	shipping: "string",
+	itemsSum: String,
+	size: String,
+	price: Number,
+	shipping: Number,
 	amount: Number,
-	keyword: "string",
+	keyword: String,
 	results: [],
 	suggestions: []
 }, {collection: 'products'});
