@@ -37,8 +37,6 @@ app.use(function(req, res, next){
 	next();
 });
 
-app.use(express.favicon());
-app.use(express.methodOverride());
 app.use(app.router);
 app.use(allowCrossDomain);
 app.use(express.static(path.join(__dirname, 'public')));
