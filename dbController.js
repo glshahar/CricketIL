@@ -2,16 +2,15 @@ var mongoose = require('mongoose');
 // Schemes / Collections
 var Product = require('./defineSchema/Product');
 var User = require('./defineSchema/User');
-// var sys = require('sys'),
-//     exec = require('child_process').exec;
-// var spawn = require('child_process').spawn,
-//     py = spawn('python', ['compute_input.py']);
+//var sys = require('sys'),
+//    exec = require('child_process').exec;
+////var spawn = require('child_process').spawn,
+//    py = spawn('python', ['compute_input.py']);
 var dateFormat = require('dateformat');
 // var nodemailer = require('nodemailer');
 // const bunyan = require('bunyan');
-// var futures = require('futures');
-// var sequence = futures.sequence();
 var scrapy = require('node-scrapy');
+
 
 // Check Login By Email (unique) + Pass
 exports.checkLogin = function(req, res){
@@ -25,16 +24,16 @@ exports.checkLogin = function(req, res){
 	var query = User.findOne({}).where('email').equals(email). 
 								 where('password').equals(password).
 								 exec (function(err, user){
-		if(err){
-			console.log(err);
-			return res.status(500).send();
-		}
-		if(!user){
-			console.log("Email / Password Incorrect");
-			return res.status(404).send();
-		}
-		console.log("Connected Successfully");
-		return res.status(200).send(user);
+	if(err){
+		console.log(err);
+		return res.status(500).send();
+	}
+	if(!user){
+		console.log("Email / Password Incorrect");
+		return res.status(404).send();
+	}
+	console.log("Connected Successfully");
+	return res.status(200).send(user);
 	})
 };
 
@@ -225,7 +224,7 @@ exports.addNewItem = function(req, res){
 
 			// set Title
 			newProduct.title = data.title;
-			var title = data.titlel;
+			var title = data.titlel
 			console.log(data.all);
 
 			// set Brand
@@ -289,7 +288,7 @@ exports.addNewItem = function(req, res){
 
 			// set Title
 			newProduct.title = data.title;
-			var title = data.titlel;
+			var title = data.titlel
 
 			// set Brand
 			for(i=0; i<data.description.length; i++)
@@ -311,7 +310,7 @@ exports.addNewItem = function(req, res){
 			if(data.shipping){
 				// var tmpShip = data.shipping.split(" ");
 				// newProduct.shipping = data.shipping;
-				newProduct.shipping = "Free Shipping";
+				newProduct.shipping = "Free Shipping"
 			}
 
 			// set Categories
@@ -331,7 +330,8 @@ exports.addNewItem = function(req, res){
 
 		});
 	}
-
+    
+    
 	function saveProduct(newProduct){
 		User.update(
 		  { "email": email },
@@ -350,263 +350,4 @@ exports.addNewItem = function(req, res){
 				return res.status(200).send(newProduct);
 		})
 	};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// // PARSE PRODUCT PAGE
-	// // python selenium tool
- //    var python = require('child_process').spawn(
- //    'python', ["test.py", url, email]);
- //    var dataString = '';
- //    var searchTest = "";
-
-	// python.stdout.on('data', function(data){
-	//   dataString += data.toString();
-	// });
-	// python.stdout.on('end', function(){
-	//     console.log('Return Data: ',dataString);
-	//     if(dataString == "")
-	//   	    return res.status(500).send();
-	//   	else searchKeyword = dataString
-	//     console.log("finish add product");
-	//     console.log(searchKeyword);
-	//     searchUrl();
-	//     return res.status(200).send();
-	// });
-
-	// // python scrapy tool
-	// function searchUrl(){
-	// 	exec('scrapy crawl cricket -a start_url="'+url+'" -a userEmail="'+email+'"', function(err, stdout, stderr) {
-	//         console.log("scrapy: " + err + " : "  + stdout);
-	//         // searchKeyword = stdout;
-	//         // console.log("KEY: "+searchKeyword);
-	//         // setTimeout(searchUrl,2000);
-	//     });
-	// };
-
-
-
-	// PARSE SEARCH PAGE
-
-	// // npm scrapy tool
-	// function searchUrl(){
-	// 	var scrapy = require('Scrapy');
-	// 	// var scrapy = new Scrapy();
-	// 	var searchUrl = 'http://www.ebay.com/sch/i.html?_from=R40&_sacat=0&_nkw='+searchKeyword+'&rt=nc&LH_BIN=1';
-
-	// 	scrapy.loop(searchUrl, { end: 30 }, function($) {
-	// 		$('.lvtitle h3').each(function() {
-	// 			console.log( $(this).text().trim() );
-	// 		});
-	// 	});
-	// };
-
-
-	// // npm skim tool
-	// function searchUrl(){
-	// 	var searchUrl = 'http://www.ebay.com/sch/i.html?_from=R40&_sacat=0&_nkw='+searchKeyword+'&rt=nc&LH_BIN=1';
-	// 	rem.stream(searchUrl).pipe(skim({
-	// 	  "$query": "div.lvpicinner ~ div ~ div.lvpicinner > a",
-	// 	  "$each": {
-	// 	    "title": "(text)",
-	// 	    "link": "(attr href)"
-	// 	  }
-	// 	}, function (err, json) {
-	// 	  console.log(json);
-	// 	}));
-	// };
-
-
-	// // python scrapy tool
-	// function searchUrl(){
-	//     exec('scrapy crawl search_spider -a email="'+email+'" -a search="'+searchKeyword+'"', function(err, stdout, stderr) {
-	//     	searchTest = stdout;
-	// 		console.log("search: " + err + " : "  + searchTest);
-	// 		if(searchTest != "")
-	// 			// sendEmail();
-	// 			return res.status(200).send();
-	// 	});
-	// };
-
-
-	// // npm html-scrapper tool
-	// function searchUrl(){ 
-	// 	var scrapper = require('html-scrapper');
-	// 	var Source = scrapper.Source;
-	// 	var Extractor = scrapper.Extractor;
-	// 	var Fn = scrapper.Fn;
-	// 	var searchUrl = 'http://www.ebay.com/sch/i.html?_from=R40&_sacat=0&_nkw='+searchKeyword+'&rt=nc&LH_BIN=1';
-	// 	var github = new Source('get', searchUrl );
-	// 	var dataSchema = {
-	// 	    results:[ {
-	// 	        $rule: '.sresult > h3 > a',
-	// 	        name: ':nth-child(0)',
-	// 	        forks: ':nth-child(1)',
-	// 	        stars: {
-	// 	            $rule: ':nth-child(2)',
-	// 	            $fn: Fn.asInt
-	// 	        }
-	// 	    }]
-	// 	};
-	// 	var extractor = new Extractor( dataSchema );
-	// 	github.read(function(err, res ){
-	// 	    var data = extractor.extract( res.body );
-	// 	    console.log( data );
-	// 	});
-	// };
-
-
-
-	// // npm node-scrapy tool
-	// function searchUrl(){
-	// 	var scrapy = require('node-scrapy'), count=0, searchResults = [],
-	// 	url = 'http://www.ebay.com/sch/i.html?_from=R40&_sacat=0&_nkw='+searchKeyword+'&rt=nc&LH_BIN=1'
-	// 		model = { maintainers: 
-	// 	              { selector: '.lvtitle a',
-	// 	                get: 'href',
-	// 	                prefix: '' } }	 
-	// 	scrapy.scrape(url, model, function(err, data) {
-	// 	    if (err) return console.error(err)
-	// 	    searchResults = data.maintainers;
-	// 	    console.log(searchResults);
-	// 	    searchResults.forEach(function (item) {
-	// 	    	console.log("item :"+item);
-	// 	    	count++;
-	// 	    	if(count==2){
-	// 			  	var python = require('child_process').spawn(
-	// 			    'python', ["test.py", item, email]);
-	// 			    var dataString = '';
-	// 			    var searchTest = "";
-
-	// 				python.stdout.on('data', function(data){
-	// 				  dataString += data.toString();
-	// 				});
-	// 				python.stdout.on('end', function(){
-	// 				    console.log('Return Data: ',dataString);
-	// 				    if(dataString == "")
-	// 				  	    return res.status(500).send();
-	// 				  	else searchKeyword = dataString
-	// 				    console.log("finish add product");
-	// 				    // console.log(searchKeyword);
-	// 				    // searchUrl();
-	// 				    return res.status(200).send();
-	// 				});
-	// 			}
-	// 		})
-	// 	});
-	// };
-
-
-
-
-
-	// // send email to user - function
-	// function sendEmail(){
-	// 	// email = cricketownil@gmail.com
-	// 	// pass = cricket123
-	// 	var text = 'Hello world from cricketownIL@gmail.com';
-	// 	// Create a SMTP transporter object
-	// 	let transporter = nodemailer.createTransport({
-	// 	    service: 'Gmail',
-	// 	    auth: {
-	// 	        user: 'cricketownIL@gmail.com',
-	// 	        pass:  'cricket123'
-	// 	    },
-	// 	    logger: bunyan.createLogger({
-	// 	        name: 'nodemailer'
-	// 	    }),
-	// 	    debug: true // include SMTP traffic in the logs
-	// 	}, {
-	// 	    // default message fields
-
-	// 	    // sender info
-	// 	    from: 'Pangalink <no-reply@pangalink.net>',
-	// 	    headers: {
-	// 	        'X-Laziness-level': 1000 // just an example header, no need to use this
-	// 	    }
-	// 	});
-	// 	console.log('SMTP Configured');
-	// 	// Message object
-	// 	let message = {
-
-	// 	    // Comma separated list of recipients
-	// 	    to: 'Gal <galsh20@gmail.com>',
-
-	// 	    // Subject of the message
-	// 	    subject: 'Nodemailer is unicode friendly ✔ #', //
-
-	// 	    // plaintext body
-	// 	    text: 'Hello to myself!',
-
-	// 	    // HTML body
-	// 	    html: '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-	// 	        '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
-	// 	    // Apple Watch specific HTML body
-	// 	    watchHtml: '<b>Hello</b> to myself',
-
-	// 	    // An array of attachments
-	// 	    attachments: [
-
-	// 	        // String attachment
-	// 	        {
-	// 	            filename: 'notes.txt',
-	// 	            content: 'Some notes about this e-mail',
-	// 	            contentType: 'text/plain' // optional, would be detected from the filename
-	// 	        },
-
-	// 	        // Binary Buffer attachment
-	// 	        {
-	// 	            filename: 'image.png',
-	// 	            content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-	// 	                '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-	// 	                'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
-
-	// 	            cid: 'note@example.com' // should be as unique as possible
-	// 	        },
-
-	// 	        // File Stream attachment
-	// 	        {
-	// 	            filename: 'nyan cat ✔.gif',
-	// 	            path: __dirname + '/assets/nyan.gif',
-	// 	            cid: 'nyan@example.com' // should be as unique as possible
-	// 	        }
-	// 	    ]
-	// 	};
-	//     var mailOptions = {
-	// 	    from: 'cricketownIL@gmail.com', // sender address
-	// 	    to: 'galsh20@gmail.com', // list of receivers
-	// 	    subject: 'Email Example', // Subject line
-	// 	    text: text //, // plaintext body
-	// 	    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-	// 	};
-	// 	transporter.sendMail(message, function(error, info){
-	// 	    if(error){
-	// 	        console.log(error);
-	// 	        res.json({yo: 'error'});
-	// 	    }else{
-	// 	        console.log('Message sent: ' + info.response);
-	// 	        res.json({yo: info.response});
-	// 	    };
-	// 	});
-	// 	transporter.close();
-	// }
-
-
-};
-
+}
